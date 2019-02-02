@@ -1,3 +1,5 @@
+import normalize from '../normalize.js';
+
 import {
   ITEM_REQUEST,
   ITEM_RESPONSE,
@@ -17,7 +19,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetching: false,
         valid: true,
-        data: action.data,
+        data: normalize(action.data),
       });
     default:
       return state;
