@@ -1,0 +1,16 @@
+a.photo {
+  box-sizing: border-box;
+  cursor: default;
+  display: inline-block;
+  margin: 2px;
+  transition: opacity 0.5s;
+
+  &.ready { opacity: 1; }
+  &.loading { opacity: 0; }
+
+  > img {
+    cursor: pointer;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+}

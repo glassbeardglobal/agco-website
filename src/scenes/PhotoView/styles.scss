@@ -1,0 +1,51 @@
+.photo-view {
+  align-items: center;
+  background-color: #222;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: calc(100vh - 60px);
+
+  .photo {
+    position: relative;
+    transition: opacity 0.2s;
+
+    &.ready { opacity: 1; }
+    &.loading{ opacity: 0; }
+
+    img {
+      box-shadow: 1px 1px 9px black;
+      max-height: calc(100vh - 100px);
+      max-width: 90vw;
+    }
+
+    .description {
+      background-color: rgba(0,0,0,0.4);
+      height: 45px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 5;
+
+      p {
+        padding-left: 20px;
+        color: white;
+        line-height: 45px;
+      }
+      strong { font-weight: bold; }
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    top: calc(50% - 11px);
+    height: 22px;
+
+    &.arrow-back { left: 15px; }
+    &.arrow-forward {
+      transform: rotate(180deg);
+      right: 15px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- node
+git:
+  depth: false
+script:
+- npm run test
+- npm run build
+deploy:
+  provider: s3
+  skip_cleanup: true
+  access_key_id: AKIAIXAPOLMFA5OFOBDA
+  secret_access_key:
+    secure: hy3yM+7qynLeX+shW8oQHRsdmLs8Yjy/+Ly/tD41yu6whMxea/xYtcd4FYoED4rWrVbZHd9KQDaHtZ5iI6/Y/KflUGDJCzU0c3DQ+t3gQAMIKuktVKqj5ip0p/XRgX/mFxM3/462xQVWujbvj0m3ca7ytuyXjarJy3cP6To/eyAW3gXnigCgXvYsvVfKDlwDQTjcNwsTs4ku4qH4XYwVbC8zJBPtdo4W3pYQ0I1O97tug+U1bSv7FzzlrqQGvp7Jv8CFtbDvk/1+8Rz7my26YoPjTaPgCKbMtsUm6lKO7kQepZmlR+VFed08FMpNZu9gvK9YkiEQy7+vrgA1tuoibyXP/C5dewXp0/QU9QqpPvBciz5Eqq/WlfEDxJTlb/wBjCx3mhrqgZXc65DfKZyPd84dhbwOGE54yiLlIBa4EFopRmylbGzWHHu9zFtk6ehr0R6aasxvjQWkCF26rkGd6r8abvrWU6kZovHEU6vQJJMUPDE3S+XQkS5aVFaFYi0OYOkkN2wyG6ipmZpr8A9GaPIks9Skzxzlv76imvX5YPP+DjXKL96SaB+GpwFrWBycxhWl/rUZbemjYbxpqsnkVZBw7UE2MYfooho2NS99+4lGftk11mZ0EhiD1KDiKAkstSLKC5Ijdj9/bgS03PDa3Rt2wt0LIEsBhZtk7w0DhKM=
+  bucket: evanlissoos.com
+  region: us-east-2
+  local-dir: build
+  on:
+    repo: Denman35/evan-portfolio-site

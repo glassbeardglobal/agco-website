@@ -1,0 +1,23 @@
+.column {
+  background-position: center;
+  background-size: cover;
+  height: calc(90vh - 60px);
+  margin: 0 12px;
+  opacity: 0.3;
+  transition: opacity 0.6s, width 0.3s;
+  width: 130px;
+
+  &.loading {
+    opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    width: 190px;
+  }
+
+  > img {
+    display: none;
+  }
+}

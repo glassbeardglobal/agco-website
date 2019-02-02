@@ -1,0 +1,22 @@
+button {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+  outline: none;
+  padding: 4px 10px;
+
+  &.green {
+    background-color: #43a047;
+    border-color: #00701a;
+    color: white;
+  }
+
+  &.red {
+    background-color: #c62828;
+    border-color: #8e0000;
+    color: white;
+  }
+}

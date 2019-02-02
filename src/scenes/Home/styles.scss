@@ -1,0 +1,29 @@
+.home {
+  .center-text {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+
+    h1 {
+      color: #363658;
+      font-family: 'Nothing You Could Do', cursive;
+      font-size: 180px;
+      text-align: center;
+    }
+  }
+
+  .columns {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+}
