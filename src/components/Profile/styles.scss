@@ -6,6 +6,7 @@ $img-width: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 14px;
 
   .profile-image {
     position: relative;
@@ -28,6 +29,24 @@ $img-width: 170px;
     h1 {
       font-size: 32px;
       font-weight: 300;
+      text-align: center;
+    }
+  }
+
+  .info {
+    table {
+      border-collapse: separate;
+      border-spacing: 22px 11px;
+
+      td {
+        margin: 5px;
+        line-height: 1.3;
+
+        &:first-child {
+          font-weight: bold;
+          text-align: right;
+        }
+      }
     }
   }
 }

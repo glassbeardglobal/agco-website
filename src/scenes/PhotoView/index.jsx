@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import arrow_back from 'assets/arrow_back.svg';
-import { fetchImageById } from 'services/api/image';
+// import { fetchImageById } from 'services/api/image';
 
 import './styles.scss';
 
@@ -31,14 +31,14 @@ class PhotoView extends Component {
   }
 
   fetchImage = () => {
-    fetchImageById(this.props.match.params.id)
-      .then(data => this.setState({
-        fetching: false,
-        imageData: data.photo,
-        next: data.next,
-        prev: data.prev,
-      }))
-      .catch(err => this.setState({ fetching: false }));
+    // fetchImageById(this.props.match.params.id)
+    //   .then(data => this.setState({
+    //     fetching: false,
+    //     imageData: data.photo,
+    //     next: data.next,
+    //     prev: data.prev,
+    //   }))
+    //   .catch(err => this.setState({ fetching: false }));
   }
 
   handleLoad = () => {

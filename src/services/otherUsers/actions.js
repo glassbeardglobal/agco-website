@@ -1,4 +1,4 @@
-import { fetchUsers } from 'services/api/users';
+import { fetchUsers } from 'services/api/user';
 
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_RESPONSE = 'USER_RESPONSE';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Photo from 'components/Photo';
-import { fetchImages } from 'services/api/image';
+// import { fetchImages } from 'services/api/image';
 import { partitionBlock } from 'utilities/partition';
 
 const PhotoRow = (props) => {
@@ -33,19 +33,19 @@ class PhotoBlock extends Component {
   }
 
   componentDidMount() {
-    const { limit, skip } = this.props;
+    // const { limit, skip } = this.props;
     this.setState({ fetching: true });
-    fetchImages(limit, skip)
-      .then(d => {
-        this.setState({
-          fetching: false,
-          photos: d.photos,
-          width: document.querySelector('#portfolio-wrapper').offsetWidth,
-        });
-      })
-      .catch(e => {
-        this.setState({ fetching: false });
-      });
+    // fetchImages(limit, skip)
+    //   .then(d => {
+    //     this.setState({
+    //       fetching: false,
+    //       photos: d.photos,
+    //       width: document.querySelector('#portfolio-wrapper').offsetWidth,
+    //     });
+    //   })
+    //   .catch(e => {
+    //     this.setState({ fetching: false });
+    //   });
   }
 
   render() {
