@@ -1,7 +1,8 @@
-import { login as postLogin } from 'services/api/login';
+import { fetchLogin } from 'services/api/auth';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_RESPONSE = 'LOGIN_RESPONSE';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 function requestLogin() {
   return {
@@ -9,19 +10,22 @@ function requestLogin() {
   };
 }
 
-function receiveLogin(data, err) {
+function receiveLogin(data) {
   return {
-    type: LOGIN_RESPONSE,
+    type: LOGIN_SUCCESS,
     data,
-    err
   };
 }
 
-export function login(body) {
+function loginFailure() {
+  return {
+    type: LOGIN_FAILURE,
+  };
+}
+
+export function login() {
   return dispatch => {
     dispatch(requestLogin());
-    postLogin(body)
-      .then(data => dispatch(receiveLogin(null, data)))
-      .catch(err => dispatch(receiveLogin(err, null)));
+    fetchLogin().then(data => dispatch(receiveLogin(data)), () => dispatch(loginFailure()));
   };
 }
