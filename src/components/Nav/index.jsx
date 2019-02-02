@@ -27,7 +27,7 @@ class Nav extends Component {
       <nav className={`navbar ${top ? 'top' : 'scrolled'} ${navDark ? 'dark' : 'light'}`}>
         <div className="logo">
           <Link to="/">
-            <h3>Evan <span>Lissoos</span></h3>
+            <h3>The <span>Dockers</span></h3>
           </Link>
         </div>
         <NavLink to="/portfolio" activeClassName="active">Portfolio</NavLink>

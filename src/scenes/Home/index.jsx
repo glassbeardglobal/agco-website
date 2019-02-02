@@ -39,7 +39,7 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="center-text">
-          <h1>Evan Lissoos</h1>
+          <h1>The Dockers</h1>
         </div>
 
         <div className="columns">
