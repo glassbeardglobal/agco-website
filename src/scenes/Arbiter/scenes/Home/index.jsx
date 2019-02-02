@@ -17,7 +17,12 @@ class Home extends Component {
   render() {
     return (
       <div className="home container">
-        <Profile />
+        <div className="left">
+          <Profile />
+        </div>
+        <div className="right">
+          <h1>Right Pane</h1>
+        </div>
       </div>
     );
   }

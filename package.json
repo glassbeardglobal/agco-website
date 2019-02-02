@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.1",
     "formik": "^1.4.3",
     "informed": "^1.10.12",
     "linear-partition": "0.0.2",
