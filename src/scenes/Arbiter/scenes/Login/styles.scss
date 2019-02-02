@@ -1,0 +1,46 @@
+.login {
+  background-image: url('../../../../assets/images/field-5.jpg');
+  background-size: cover;
+  background-position: 50% 0%;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #fff;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.95);
+    font-size: 104px;
+    font-weight: 200;
+    text-transform: uppercase;
+
+    span { font-weight: 200; }
+  }
+
+  input {
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 2px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 23px;
+    padding: 10px 16px;
+    width: 280px;
+    margin: 18px;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(255,255,255,0.73);
+    }
+  }
+
+  button {
+    display: block;
+    margin: auto;
+
+    font-size: 19px;
+  }
+}
