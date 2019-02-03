@@ -4,6 +4,7 @@ a.photo {
   display: inline-block;
   margin: 2px;
   transition: opacity 0.5s;
+  position: relative;
 
   &.ready { opacity: 1; }
   &.loading { opacity: 0; }
@@ -12,5 +13,23 @@ a.photo {
     cursor: pointer;
     max-width: 100%;
     vertical-align: middle;
+    position: relative;
+    z-index: 3;
+  }
+
+  .description {
+    background-color: rgba(0,0,0,0.6);
+    height: 36px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 5;
+
+    p {
+      padding-left: 20px;
+      color: white;
+      line-height: 36px;
+    }
+    strong { font-weight: bold; }
   }
 }

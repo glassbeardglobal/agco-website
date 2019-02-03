@@ -12,13 +12,11 @@ class Photo extends Component {
   onLoad = () => { this.setState({ loaded: true }) }
 
   render() {
-    const { images, imgWidth, _id, title } = this.props;
+    const { images, imgWidth, _id, name } = this.props;
     const { loaded } = this.state;
     const og = images[images.length - 1];
 
     const srcset = images.map(i => `${i.url} ${i.width}w`);
-
-    console.log(this.props);
 
     return (
       <Link
@@ -31,8 +29,9 @@ class Photo extends Component {
           srcSet={srcset.join(', ')}
           sizes={`${imgWidth}px`}
           onLoad={this.onLoad}
-          alt={title}
+          alt={name}
         />
+        <div className="description"><p>{name}</p></div>
       </Link>
     );
   }

@@ -2,27 +2,27 @@ $black: #171717;
 
 .navbar {
   background-color: transparent;
-  // transition: background-color 0.3s;
+  transition: background-color 0.3s;
   z-index: 100;
 
   .logo h3 {
-    color: white;
+    color: black;
     display: inline;
     font-size: 22px;
     font-weight: 400;
     text-transform: uppercase;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    // text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 
     span { font-weight: 700; }
   }
 
   & > a {
     border-bottom: 2px solid rgba(0,0,0,0);
-    color: white;
+    color: black;
     font-size: 14px;
     text-transform: uppercase;
     transition: border-color 0.3s;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    // text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 
     &:hover { border-color: #CCC; }
     &.active {
