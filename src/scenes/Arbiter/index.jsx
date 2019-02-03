@@ -10,7 +10,7 @@ class Arbiter extends Component {
 
     console.log(user)
 
-    if (user !== null) {
+    if (user === null) {
       return <Login />;
     } else {
       return <Home />;

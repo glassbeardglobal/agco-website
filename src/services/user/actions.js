@@ -23,9 +23,9 @@ function loginFailure() {
   };
 }
 
-export function login() {
+export function login(username, password) {
   return dispatch => {
     dispatch(requestLogin());
-    fetchLogin().then(data => dispatch(receiveLogin(data)), () => dispatch(loginFailure()));
+    fetchLogin(username, password).then(data => dispatch(receiveLogin(data)), () => dispatch(loginFailure()));
   };
 }
