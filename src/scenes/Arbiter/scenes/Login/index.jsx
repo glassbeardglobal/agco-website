@@ -8,11 +8,13 @@ import logo from 'assets/logo.png';
 import './styles.scss';
 
 class Login extends Component {
-  submit = (values) => {
-    this.props.login(values.email, values.password);
+  submit = (values, bag) => {
+    this.props.login(values.email, values.password)
+    bag.resetForm();
   }
 
   render() {
+    const { failure } = this.props;
     return (
       <div className="login">
         <div className="login-form">
@@ -56,6 +58,7 @@ class Login extends Component {
                 <button className="button" type="submit" disabled={isSubmitting}>
                   Log In
                 </button>
+                {failure && <span className="failure">Login failed</span>}
               </form>
             )}
           </Formik>
@@ -65,8 +68,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  failure: !state.user.loginSuccessful, 
+})
+
 const mapDispatchToProps = dispatch => ({
   login: (username, password) => dispatch(login(username, password)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
