@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    const { pane, setPane } = this.props;
+    const { pane, setPane, user } = this.props;
     const { rested } = this.state;
     
     return (
@@ -92,7 +92,7 @@ class App extends Component {
                 </Transition>
               </div>
 
-              { location.pathname === "/" &&
+              { location.pathname === "/" && user &&
                 <div className="tabs">
                   <Tabs
                     value={pane}
@@ -108,7 +108,7 @@ class App extends Component {
                 </div>
               }
 
-              { location.pathname === "/" && pane === 0 &&
+              { location.pathname === "/" && pane === 0 && user &&
                 <Fab color="secondary" aria-label="Add" className="add-icon">
                   <Link to="/upload">
                     <AddIcon />
@@ -125,6 +125,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   pane: state.ui.pane,
+  user: state.user.data,
 });
 const mapDispatchToProps = dispatch => ({
   setPane: pane => dispatch(setPane(pane)),
