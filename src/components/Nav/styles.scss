@@ -41,3 +41,10 @@ $black: #171717;
     }
   }
 }
+
+@media (max-width: 600px) {
+  nav.navbar {
+    padding: 0 25px;
+    & > a { margin: 0 13px; }
+  }
+}
