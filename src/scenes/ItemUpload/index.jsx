@@ -6,15 +6,30 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+
+import { uploadItem as uploadItemAPI } from 'services/api/items';
 
 import './styles.scss';
+
+const FORM_INITIAL = {
+  file: null,
+  name: '',
+  manufacturer: '',
+  compatibility: '',
+  description: '',
+  condition: '',
+  year: '',
+  price: '',
+};
 
 class ItemUpload extends Component {
   constructor() {
     super();
 
     this.state = {
-      imageUploaded: true,
+      imageUploaded: false,
+      error: false,
     }
   }
 
@@ -22,14 +37,19 @@ class ItemUpload extends Component {
     this.setState({ imageUploaded: true });
   }
 
+  submit = (values, bag) => {
+    bag.setSubmitting(true);
+    uploadItemAPI(values)
+      .then(() => bag.setSubmitting(false));
+  }
+
   render() {
     const { imageUploaded } = this.state;
-    console.log(imageUploaded);
 
     return (
       <div className="container upload">
         <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={FORM_INITIAL}
             onSubmit={this.submit}
           >
             {({
@@ -38,6 +58,7 @@ class ItemUpload extends Component {
               handleBlur,
               handleSubmit,
               setFieldValue,
+              isSubmitting,
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit}>
@@ -49,6 +70,7 @@ class ItemUpload extends Component {
 
                     <input
                       id="image-upload"
+                      name="image-upload"
                       type="file"
                       accept="image/*"
                       capture="camera"
@@ -96,8 +118,8 @@ class ItemUpload extends Component {
                       onBlur={handleBlur}
                       value={values.description}
                       multiline={true}
-                      rows={3}
-                      rowsMax={5}
+                      rows={2}
+                      rowsMax={4}
                       className="field ta"
                     />
                     <div className="field" style={{ marginTop: 14 }}>
@@ -136,6 +158,9 @@ class ItemUpload extends Component {
                       value={values.price}
                       className="field"
                     />
+                    <Button color="primary" type="submit" disabled={isSubmitting} variant="contained">
+                      Submit
+                    </Button>
                   </div>
                 }
               </form>

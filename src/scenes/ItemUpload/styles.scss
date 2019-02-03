@@ -32,5 +32,11 @@
 
       & > .sel { width: 100%; }
     }
+
+    button {
+      margin: 20px auto 0 auto;
+      position: static;
+      height: 42px;
+    }
   }
 }
