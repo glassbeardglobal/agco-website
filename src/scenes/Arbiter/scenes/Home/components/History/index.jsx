@@ -19,7 +19,7 @@ const History = ({ transactions, userDict, itemDict, transactionDict, userId }) 
         transactions.map(transactionId => {
           const cur = transactionDict[transactionId];
           const date = new Date(cur.time);
-          const datestring = `${date.getDate()} / ${date.getMonth() + 1}`;
+          const datestring = `${date.getMonth() + 1} /  ${date.getDate()}`;
           let isBuyer = false;
           let otherUserId = cur.buyer;
           if (cur.buyer === userId) {
