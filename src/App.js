@@ -56,7 +56,7 @@ class App extends Component {
     }, 5000);
 
     if (process.env.REACT_APP_BYPASS_LOGIN) {
-      setTimeout(() => store.dispatch(login('bigdock2@gmail.com', 'boithedock')), 300);
+      setTimeout(() => store.dispatch(login('jacobi_sales@farmer.com', 'iloveharvest')), 300);
     }
   }
 

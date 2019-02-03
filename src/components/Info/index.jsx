@@ -45,7 +45,7 @@ class Info extends Component {
   }
 
   render() {
-    const { data, onClose, disableButtons } = this.props;
+    const { data, onClose, disableButtons, id } = this.props;
 
     if (data === null) {
       return null;
@@ -63,7 +63,7 @@ class Info extends Component {
     } = data;
 
     return (
-      <div className={`sliding-info ${disableButtons ? 'no-buttons' : 'butt'}`}>
+      <div className={`sliding-info ${disableButtons ? 'no-buttons' : 'butt'}`} id={id}>
         <CloseIcon className="close" onClick={onClose} />
         <h5>{name}</h5>
         <div className="split">
