@@ -43,3 +43,18 @@ export const uploadItem = (data) => {
     return null;
   });
 }
+
+export const toggleSelling = (itemId, forSale) => {
+  return fetch(`${endpoint}/item/${itemId}/toggle`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ forSale }),
+  }).then(response => {
+    if (response.status >= 400) {
+      throw new Error('Whoops :(');
+    }
+    return null;
+  });
+}
