@@ -36,7 +36,11 @@ const History = ({ transactions, userDict, itemDict, transactionDict, userId }) 
                 <span className="date">{datestring}</span>
                 <span className="item-name">{item.name}</span>
               </div>
-              <img src={ isBuyer ? PurchaseArrow : SaleArrow } className={ isBuyer ? 'purchase-arrow' : 'sale-arrow'}/>
+              <img
+                src={ isBuyer ? PurchaseArrow : SaleArrow }
+                className={ isBuyer ? 'purchase-arrow' : 'sale-arrow'}
+                alt={ isBuyer ? "Purchase arrow" : "Sale arrow"}
+              />
               <span>{otherUser.username}</span>
               <span className="price">{`$${cur.price}`}</span>
             </div>

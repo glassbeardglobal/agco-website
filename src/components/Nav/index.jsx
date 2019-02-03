@@ -20,8 +20,12 @@ class Nav extends Component {
   }
 
   render() {
-    const { navDark } = this.props;
+    const { navDark, user } = this.props;
     const { top } = this.state;
+
+    if (!user) {
+      return null;
+    }
 
     return (
       <nav className={`navbar ${top ? 'top' : 'scrolled'} ${navDark ? 'dark' : 'light'}`}>
@@ -30,7 +34,8 @@ class Nav extends Component {
             <h3>The <span>Harvest</span></h3>
           </Link>
         </div>
-        <NavLink to="/portfolio" activeClassName="active">Portfolio</NavLink>
+        <NavLink exact to="/" activeClassName="active">Dashboard</NavLink>
+        <NavLink to="/market" activeClassName="active">Market</NavLink>
       </nav>
     );
   }
@@ -38,6 +43,7 @@ class Nav extends Component {
 
 const mapStateToProps = state => ({
   navDark: state.ui.navDark,
+  user: state.user.data,
 });
 
 export default withRouter(connect(mapStateToProps)(Nav));
