@@ -6,6 +6,11 @@ import './styles.scss';
 class Profile extends Component {
   render() {
     const { userDict, userId } = this.props;
+
+    if (!userId) {
+      return null;
+    }
+
     const user = userDict[userId];
     return (
       <div className="profile">

@@ -27,8 +27,8 @@ class Info extends Component {
       .catch(err => console.log(err));
   }
 
-  onMarket = () => {
-    const { data, userId } = this.props;
+  purchase = () => {
+    const { data, userId, getItems, getUsers, getTransactions, getUser } = this.props;
     const itemId = data._id;
     const price = data.price;
     const sellerId = data.userId;
@@ -39,7 +39,7 @@ class Info extends Component {
         getItems();
         getUsers();
         getTransactions();
-        getUser(userId);
+        // getUser(userId);
       })
       .catch(err => console.log(err));
   }
@@ -145,7 +145,7 @@ class Info extends Component {
 
         { disableButtons &&
           <div className="buttons">
-            <Button variant="contained" color="primary" onClick={this.onMarket}>
+            <Button variant="contained" color="primary" onClick={this.purchase}>
               Purchase
             </Button>
           </div>
@@ -161,6 +161,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getItems: () => dispatch(getItems()),
+  getUsers: () => dispatch(getUsers()),
+  getTransactions: () => dispatch(getTransactions()),
+  getUser: (x) => dispatch(getUser(x)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info);

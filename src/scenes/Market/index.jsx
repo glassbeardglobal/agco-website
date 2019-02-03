@@ -43,17 +43,18 @@ class Market extends React.Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items, user } = this.props;
     const { width } = this.state;
 
     let body = null;
-    if (items && width > 0) {
+    if (user && items && width > 0) {
       const { byId } = items;
+      const { _id } = user;
       const photos = [];
 
       Object.keys(byId).forEach(id => {
         const img = byId[id];
-        if (img.forSale) {
+        if (img.forSale && img.userId !== _id) {
           photos.push(Object.assign({}, img, {
             images: [img.image],
           }));
@@ -84,6 +85,7 @@ class Market extends React.Component {
 };
 
 const mapStateToProps = state => ({
+  user: state.user.data,
   items: state.item.data,
   filters: state.market.filters,
   searchDirty: state.market.searchDirty,

@@ -27,6 +27,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetching: false,
         loginSuccessful: false,
+        data: null,
       });
     case USER_RESPONSE:
       return Object.assign({}, state, {
