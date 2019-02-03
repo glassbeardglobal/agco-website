@@ -1,7 +1,7 @@
 import { fetchUsers } from 'services/api/user';
 
-export const USER_REQUEST = 'USER_REQUEST';
-export const USER_RESPONSE = 'USER_RESPONSE';
+export const USER_REQUEST = 'USER_REQUESTFDSFDFS';
+export const USER_RESPONSE = 'USER_RESPONSEFDFSD';
 
 function requestUsers() {
   return {
