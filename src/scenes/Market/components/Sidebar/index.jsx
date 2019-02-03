@@ -4,7 +4,7 @@ import { addFilter, removeFilter } from 'services/market/actions';
 
 import './styles.scss';
 
-const filterOptions = ['Big', 'Little', 'Dock-ready'];
+const filterOptions = ['Oils', 'Gears', 'Sensors', 'Motors', 'Chains', 'Tools', 'Fittings', 'Connectors', 'Tires'];
 
 class Sidebar extends React.Component {
   constructor(props) {
