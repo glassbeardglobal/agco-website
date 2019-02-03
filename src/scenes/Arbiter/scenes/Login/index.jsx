@@ -3,19 +3,25 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 
 import { login } from 'services/user/actions';
+import logo from 'assets/logo.png';
 
 import './styles.scss';
 
 class Login extends Component {
-  submit = (values) => {
-    this.props.login(values.email, values.password);
+  submit = (values, bag) => {
+    this.props.login(values.email, values.password)
+    bag.resetForm();
   }
 
   render() {
+    const { failure } = this.props;
     return (
       <div className="login">
-        <h1>The <span>Harvest</span></h1>
         <div className="login-form">
+          <div className="title-cont">
+            <img src={logo} alt="logo" className="logo" />
+            <h1>The Harvest</h1>
+          </div>
           <Formik
             initialValues={{ email: '', password: '' }}
             onSubmit={this.submit}
@@ -49,9 +55,10 @@ class Login extends Component {
                   placeholder="Password"
                 />
                 {errors.password && touched.password && errors.password}
-                <button className="green" type="submit" disabled={isSubmitting}>
+                <button className="button" type="submit" disabled={isSubmitting}>
                   Log In
                 </button>
+                {failure && <span className="failure">Login failed</span>}
               </form>
             )}
           </Formik>
@@ -61,8 +68,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  failure: !state.user.loginSuccessful, 
+})
+
 const mapDispatchToProps = dispatch => ({
   login: (username, password) => dispatch(login(username, password)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

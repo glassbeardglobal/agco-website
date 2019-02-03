@@ -7,7 +7,7 @@ import {
 const initialState = {
   fetching: false,
   valid: false,
-  loginSuccessful: null,
+  loginSuccessful: true,
   data: null,
 };
 
