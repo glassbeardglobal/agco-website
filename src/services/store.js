@@ -7,6 +7,7 @@ import itemReducer from './item/reducer';
 import uiReducer from './UI/reducer';
 import otherUsersReducer from './otherUsers/reducer';
 import transactionReducer from './transaction/reducer';
+import marketReducer from './market/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -14,9 +15,11 @@ const rootReducer = combineReducers({
   item: itemReducer,
   otherUsers: otherUsersReducer,
   transaction: transactionReducer,
+  market: marketReducer,
 });
 
 let middleware = applyMiddleware(thunk, logger);
 
 const store = createStore(rootReducer, middleware);
+
 export default store;

@@ -1,0 +1,23 @@
+.market-sidebar {
+  width: 320px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 9px rgba(60,60,60,0.3);
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .filter-option {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    border-bottom: 1px solid #ededed;
+    font-size: 20px;
+
+    input {
+      height: 20px;
+    }
+  }
+}
