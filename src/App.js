@@ -50,6 +50,11 @@ class App extends Component {
     store.dispatch(getOtherUsers());
     store.dispatch(getTransactions());
 
+    setInterval(() => {
+      store.dispatch(getTransactions());
+      store.dispatch(getItems());
+    }, 5000);
+
     if (process.env.REACT_APP_BYPASS_LOGIN) {
       setTimeout(() => store.dispatch(login('bigdock2@gmail.com', 'boithedock')), 300);
     }
