@@ -4,23 +4,29 @@ const color3 = '#E3E2E5'
 
 export const productSales = {
   datasets: [{
-    data: [30, 20, 10],
+    data: [30, 10, 11, 7, 5, 3],
     backgroundColor: [
+      color1,
+      color2,
+      color3,
       color1,
       color2,
       color3,
     ],
   }],
   labels: [
-    'Tires',
-    'Gears',
-    'Sensors',
+  'Oil',
+  'Gears',
+  'Motors',
+  'Chains',
+  'Tools',
+  'Fittings',
   ]
 }
 
 export const slowSellingProducts = {
   datasets: [{
-    data: [2.5, 2, 1.3],
+    data: [3, 1.4, 1.3],
     backgroundColor: [
       color1,
       color2,
@@ -28,29 +34,33 @@ export const slowSellingProducts = {
     ],
   }],
   labels: [
-    'Product 1',
-    'Product 2',
-    'Product 3',
+    'D Vac Chute Cover',
+    'JD 7200 Meter Drive',
+    'ProSeries Rear Mount Bracket',
   ]
 }
 
 export const customerBrandPreferences = {
   datasets: [{ 
-    data: [35, 50],
+    data: [44, 28, 21, 7],
     backgroundColor: [
+      color1,
       color2,
+      color3,
       color1,
     ],
   }],
   labels: [
-    'John Deere',
-    'CAT',
+  'Challenger',
+  'Massey Ferguson',
+  'Fendt',
+  'Valtra',
   ]
 };
 
 export const customerStatePreferences = {
   datasets: [{ 
-    data: [80, 20],
+    data: [63, 37],
     backgroundColor: [
       color1,
       color2,

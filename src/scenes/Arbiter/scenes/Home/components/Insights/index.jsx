@@ -3,11 +3,8 @@ import { Pie, HorizontalBar, defaults } from 'react-chartjs-2';
 import { Spring, animated, config } from 'react-spring';
 import * as data from './chart/data';
 import * as options from './chart/options';
-
 import './styles.scss';
-
 defaults.global.animation.easing = 'easeOutBack';
-
 class Insights extends Component {
   constructor(props) {
     super(props);
@@ -17,10 +14,8 @@ class Insights extends Component {
       timer: false,
       chartHeight: '300px',
     };
-
     this.AnimatedGraph = this.AnimatedGraph.bind(this);
   }
-
   static getDerivedStateFromProps(props, state) {
     if (props.visible && !state.visible) {
       return { visible: true, display: false, timer: true };
@@ -30,7 +25,6 @@ class Insights extends Component {
     }
     return state;
   }
-
   componentDidUpdate() {
     const { timer } = this.state;
     if (timer) {
@@ -38,7 +32,6 @@ class Insights extends Component {
       this.setState({ timer: false });
     }
   }
-
   AnimatedGraph({ children }) {
     return (
       <Spring
@@ -54,7 +47,6 @@ class Insights extends Component {
       </Spring>
     );
   }
-
   // addData() {
   //   const chart = this.refs.chart.chartInstance;
   //   console.log(this.refs);
@@ -65,10 +57,8 @@ class Insights extends Component {
   //   this.setState({ chartHeight: '400px' });
   //   chart.update();
   // }
-
   render() {
     const { display } = this.state;
-
     return (
       <div className="pane insights">
         <div className="buyer">
@@ -78,13 +68,13 @@ class Insights extends Component {
               <this.AnimatedGraph>
                 <HorizontalBar data={data.productSales} options={options.bar}/>
                 <p className="graph-desc">
-                  Tires are your most popularly sold product type.
+                  Oils are your most popularly sold product category.
                 </p>
               </this.AnimatedGraph>
               <this.AnimatedGraph>
                 <Pie data={data.customerBrandPreferences} options={options.pie} />
                 <p className="graph-desc">
-                  Most of your customers own CAT products.
+                  44% of your customers own Challenger machinery.
                 </p>
               </this.AnimatedGraph>
             </div>
@@ -97,13 +87,13 @@ class Insights extends Component {
               <this.AnimatedGraph>
                 <HorizontalBar data={data.slowSellingProducts} options={options.bar} />
                 <p className="graph-desc">
-                  You've been holding on to product 2 for three years.
+                  You've been holding onto D Vac Chute Cover for three years.
                 </p>
               </this.AnimatedGraph>
               <this.AnimatedGraph>
                 <Pie data={data.customerStatePreferences} options={options.pie} />
                 <p className="graph-desc">
-                  Your customers prefer used products.
+                  63% of your customers purchase used products.
                 </p>
               </this.AnimatedGraph>
             </div>
@@ -113,5 +103,4 @@ class Insights extends Component {
     );
   }
 }
-
 export default Insights;
