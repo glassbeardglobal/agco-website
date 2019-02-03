@@ -1,12 +1,15 @@
 .transaction-el {
   width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 1px 1px 9px rgba(60,60,60,0.3);
   border-radius: 4px;
-  height: 50px;
+  height: 120px;
   margin-bottom: 13px;
+  padding: 11px;
+  box-sizing: border-box;
 
   .left-data {
     width: 300px;
@@ -33,6 +36,13 @@
 
   .price {
     margin-right: 10px;
+  }
+}
+
+@media (max-width: 765px) {
+  .transaction-el {
+    flex-direction: column;
+    .purchase-arrow, .sale-arrow { height: 35px; }
   }
 }
 
