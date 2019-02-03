@@ -1,0 +1,17 @@
+.market-searchbar {
+  width: 100%;
+
+  input {
+    width: 80%;
+    border-radius: 4px;
+    box-shadow: 1px 1px 9px rgba(60,60,60,0.3);
+    padding: 8px 16px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+  }
+
+  .initial {
+    color: grey;
+  }
+}
