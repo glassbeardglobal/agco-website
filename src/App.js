@@ -11,11 +11,16 @@ import PhotoView from 'scenes/PhotoView';
 import store from 'services/store';
 import { getItems } from 'services/item/actions';
 import { getUsers as getOtherUsers } from 'services/otherUsers/actions';
+import { login} from 'services/user/actions';
 
 class App extends Component {
   componentDidMount() {
     store.dispatch(getItems());
     store.dispatch(getOtherUsers());
+
+    if (process.env.REACT_APP_BYPASS_LOGIN) {
+      setTimeout(() => store.dispatch(login('farmer1@gmail.com', 'dockboi')), 300);
+    }
   }
 
   render() {
