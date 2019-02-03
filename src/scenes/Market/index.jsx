@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import PhotoBlock from 'components/PhotoBlock';
 import Sidebar from './components/Sidebar';
@@ -17,9 +18,11 @@ class Market extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      width: this.rightRef.current.clientWidth,
-    });
+    if (this.props.user) {
+      this.setState({
+        width: this.rightRef.current.clientWidth,
+      });
+    }
   }
 
   filter = (photos) => {
@@ -45,6 +48,10 @@ class Market extends React.Component {
   render() {
     const { items, user } = this.props;
     const { width } = this.state;
+
+    if (!user) {
+      return <Redirect to="/" />
+    }
 
     let body = null;
     if (user && items && width > 0) {
