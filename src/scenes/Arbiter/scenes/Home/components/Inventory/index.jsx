@@ -8,7 +8,7 @@ import PhotoBlock from 'components/PhotoBlock';
 
 class Inventory extends Component {
   render() {
-    const { items, width } = this.props;
+    const { items, width, userID } = this.props;
 
     let body = null;
     if (items && width > 0) {
@@ -17,9 +17,11 @@ class Inventory extends Component {
 
       Object.keys(byId).forEach(id => {
         const img = byId[id];
-        photos.push(Object.assign({}, img, {
-          images: [img.image]
-        }));
+        if (img.userId === userID) {
+          photos.push(Object.assign({}, img, {
+            images: [img.image]
+          }));
+        }
       });
 
       body = (
@@ -42,6 +44,7 @@ class Inventory extends Component {
 
 const mapStateToProps = state => ({
   items: state.item.data,
+  userID: state.user.data._id,
 });
 
 export default connect(mapStateToProps)(Inventory);
