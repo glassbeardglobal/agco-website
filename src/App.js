@@ -37,7 +37,7 @@ const mapRouteToComponent = (pathname) => {
 class App extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       rested: {},
     }
@@ -56,14 +56,13 @@ class App extends Component {
   }
 
   handleRest(pathname) {
-    const { rested } = this.state;
-    this.setState({ rested: { ...rested, [pathname]: true }});
+    this.setState({ rested: { [pathname]: true }});
   }
 
   render() {
     const { pane, setPane } = this.props;
     const { rested } = this.state;
-
+    
     return (
       <BrowserRouter>
         <Route
@@ -86,14 +85,12 @@ class App extends Component {
                     const Component = mapRouteToComponent(pathname)
                     return (
                       <animated.div style={{ ...style, position: 'absolute', width: '100vw', minHeight: '100%' }}>
-                        <Component rested={rested[pathname]} />
+                        <Component rested={rested[pathname] ? rested[pathname] : false} />
                       </animated.div>
                     )
                   }}
                 </Transition>
               </div>
-
-              { console.log(location) }
 
               { location.pathname === "/" &&
                 <div className="tabs">
