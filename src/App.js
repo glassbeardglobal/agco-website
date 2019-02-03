@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Transition, config, animated } from 'react-spring';
 import Tabs from '@material-ui/core/Tabs';
@@ -133,4 +133,7 @@ const mapDispatchToProps = dispatch => ({
   setPane: pane => dispatch(setPane(pane)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(App);
+
+const ProvidedApp = () => <Provider store={store}><Wrapped /></Provider>;
+export default ProvidedApp;
