@@ -43,8 +43,10 @@ class Home extends Component {
       <div className="home-wrapper">
         <div className="home container">
           <div className="left">
-            <Profile />
-            <Picker active={pane} setPane={this.setPane} />
+            <div>
+              <Profile />
+              <Picker active={pane} setPane={this.setPane} />
+            </div>
           </div>
           <div className="right" ref={this.rightRef}>
             <PaneTranstition visible={pane === 0} uid="inventory-pane">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -30,7 +31,9 @@ class Inventory extends Component {
       <div className="pane inventory">
         { body }
         <Fab color="secondary" aria-label="Add" className="add-icon">
-          <AddIcon />
+          <Link to="/upload">
+            <AddIcon />
+          </Link>
         </Fab>
       </div>
     );
