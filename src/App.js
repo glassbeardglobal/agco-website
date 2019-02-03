@@ -17,6 +17,7 @@ import ItemUpload from 'scenes/ItemUpload';
 import store from 'services/store';
 import { getItems } from 'services/item/actions';
 import { getUsers as getOtherUsers } from 'services/otherUsers/actions';
+import { getUser } from 'services/user/actions';
 import { getTransactions } from 'services/transaction/actions';
 import { login } from 'services/user/actions';
 import { setPane } from 'services/UI/actions';
@@ -53,6 +54,9 @@ class App extends Component {
     setInterval(() => {
       store.dispatch(getTransactions());
       store.dispatch(getItems());
+      if (this.props.user) {
+        store.dispatch(getUser(this.props.user._id));
+      }
     }, 5000);
 
     if (process.env.REACT_APP_BYPASS_LOGIN) {
