@@ -39,7 +39,7 @@ class Info extends Component {
         getItems();
         getUsers();
         getTransactions();
-        // getUser(userId);
+        getUser(userId);
       })
       .catch(err => console.log(err));
   }

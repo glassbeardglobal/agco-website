@@ -18,7 +18,7 @@ export const fetchLogin = (username, password) => {
 
 
 export const fetchUser = (userId) => {
-  return fetch(`/user/${userId}`, {
+  return fetch(`${endpoint}/user/${userId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

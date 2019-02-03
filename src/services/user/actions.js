@@ -40,6 +40,7 @@ function recieveUser(data) {
 
 export function getUser(userId) {
   return dispatch => {
+    console.log("FETCHING USER");
     fetchUser(userId).then(data => dispatch(recieveUser(data)), err => console.log(err));
   };
 }
