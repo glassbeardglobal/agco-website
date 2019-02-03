@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
+import StoreIcon from '@material-ui/icons/Store';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 import Profile from 'components/Profile';
 
@@ -67,9 +67,9 @@ class Home extends Component {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab icon={<PhoneIcon />} />
-            <Tab icon={<FavoriteIcon />} />
-            <Tab icon={<PersonPinIcon />} />
+            <Tab icon={<StoreIcon />} />
+            <Tab icon={<ReceiptIcon />} />
+            <Tab icon={<AssessmentIcon />} />
           </Tabs>
         </div>
       </div>

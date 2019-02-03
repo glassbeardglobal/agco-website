@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 import PhotoBlock from 'components/PhotoBlock';
 
@@ -27,6 +29,9 @@ class Inventory extends Component {
     return (
       <div className="pane inventory">
         { body }
+        <Fab color="secondary" aria-label="Add" className="add-icon">
+          <AddIcon />
+        </Fab>
       </div>
     );
   }

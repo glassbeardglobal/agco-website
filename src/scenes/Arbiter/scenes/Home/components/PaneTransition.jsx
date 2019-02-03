@@ -29,12 +29,13 @@ class PaneTransition extends Component {
 
   componentDidUpdate(prevProps) {
     const { visible, uid } = this.props;
+    const { innerWidth } = window;
     if (!visible && prevProps.visible) {
       // Transition out
       anime({
         targets: `#${uid}`,
         opacity: [1, 0],
-        left: [0, 30],
+        left: innerWidth < 830 ? null : [0, 30],
         duration: ANIMATION_DURATION,
         easing: 'linear',
         complete: () => {
@@ -50,7 +51,7 @@ class PaneTransition extends Component {
         anime({
           targets: `#${uid}`,
           opacity: [0, 1],
-          left: [-30, 0],
+          left: innerWidth < 830 ? null : [-30, 0],
           duration: ANIMATION_DURATION,
           easing: 'linear',
         });
