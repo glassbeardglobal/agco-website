@@ -8,8 +8,15 @@ import Arbiter from 'scenes/Arbiter';
 import Portfolio from 'scenes/Portfolio';
 import PhotoView from 'scenes/PhotoView';
 import store from 'services/store';
+import { getItems } from 'services/item/actions';
+import { getUsers as getOtherUsers } from 'services/otherUsers/actions';
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(getItems());
+    store.dispatch(getOtherUsers());
+  }
+
   render() {
     return (
       <Provider store={store}>

@@ -10,5 +10,9 @@
   .right {
     margin-left: 50px;
     flex-grow: 1;
+
+    .pane {
+      h1 { font-weight: 200; }
+    }
   }
 }
