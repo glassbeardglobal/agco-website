@@ -131,8 +131,11 @@ class PhotoRow extends Component {
             imgWidth={scaled[i]}
             key={x._id}
             onClick={() => {
-              console.log(x._id);
-              this.setState({ active: x._id });
+              if (active === x._id) {
+                this.setState({ active: null });
+              } else {
+                this.setState({ active: x._id });
+              }
             }}
           />
         ))}

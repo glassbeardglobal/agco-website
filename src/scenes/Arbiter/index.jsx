@@ -6,12 +6,11 @@ import Home from './scenes/Home';
 
 class Arbiter extends Component {
   render() {
-    const { user } = this.props;
-
+    const { user, rested } = this.props;
     if (user === null) {
       return <Login />;
     } else {
-      return <Home />;
+      return <Home rested={rested} />;
     }
   }
 }
