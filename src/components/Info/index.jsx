@@ -24,7 +24,7 @@ class Info extends Component {
   }
 
   render() {
-    const { data, onClose } = this.props;
+    const { data, onClose, disableButtons } = this.props;
 
     if (data === null) {
       return null;
@@ -42,7 +42,7 @@ class Info extends Component {
     } = data;
 
     return (
-      <div className="sliding-info">
+      <div className={`sliding-info ${disableButtons ? 'no-buttons' : 'butt'}`}>
         <CloseIcon className="close" onClick={onClose} />
         <h5>{name}</h5>
         <div className="split">
@@ -110,14 +110,25 @@ class Info extends Component {
             </tbody>
           </table>
         </div>
-        <div className="buttons">
-          <Button variant="contained" color="primary" disabled={!!forSale} onClick={this.onMarket}>
-            Mark For Sale
-          </Button>
-          <Button variant="contained" color="secondary" disabled={!forSale} onClick={this.offMarket}>
-            Take Off Market
-          </Button>
-        </div>
+
+        { !disableButtons &&
+          <div className="buttons">
+            <Button variant="contained" color="primary" disabled={!!forSale} onClick={this.onMarket}>
+              Mark For Sale
+            </Button>
+            <Button variant="contained" color="secondary" disabled={!forSale} onClick={this.offMarket}>
+              Take Off Market
+            </Button>
+          </div>
+        }
+
+        { disableButtons &&
+          <div className="buttons">
+            <Button variant="contained" color="primary" onClick={this.onMarket}>
+              Purchase
+            </Button>
+          </div>
+        }
       </div>
     );
   }

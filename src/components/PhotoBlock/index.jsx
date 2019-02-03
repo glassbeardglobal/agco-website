@@ -18,7 +18,7 @@ class PhotoRow extends Component {
   }
 
   render() {
-    const { containerWidth, photos, items } = this.props;
+    const { containerWidth, photos, items, disableButtons } = this.props;
     const { active, close } = this.state;
     const ratios = photos.map(x => {
       const og = x.images[x.images.length-1];
@@ -51,7 +51,7 @@ class PhotoRow extends Component {
         ))}
 
         <div className={active && !close ? 'info active' : 'info inactive'}>
-          <Info data={data} onClose={() => {
+          <Info data={data} disableButtons={disableButtons} onClose={() => {
             this.setState({ close: true });
             setTimeout(() => this.setState({ active: null, close: false }), 420);
           }} />
@@ -71,12 +71,12 @@ const PR = connect(mapStateToProps, mapDispatchToProps)(PhotoRow);
 
 class PhotoBlock extends Component {
   render() {
-    const { photos, width } = this.props;
+    const { photos, width, disableButtons } = this.props;
     const rows = partitionBlock(photos, width < 500);
 
     return (
       <div>
-        { rows.map(r => <PR photos={r} containerWidth={width} key={r[0]._id} />)}
+        { rows.map(r => <PR photos={r} containerWidth={width} key={r[0]._id} disableButtons={disableButtons} />)}
       </div>
     );
   }

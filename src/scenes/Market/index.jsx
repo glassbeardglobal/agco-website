@@ -41,7 +41,7 @@ class Market extends React.Component {
       });
 
       body = (
-        <PhotoBlock photos={photos} width={width} />
+        <PhotoBlock photos={photos} width={width} disableButtons />
       );
     }
 
