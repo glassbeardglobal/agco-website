@@ -6,7 +6,7 @@
     overflow: hidden;
 
     &.inactive { height: 0; opacity: 0; }
-    &.active { height: 140px; opacity: 1; }
+    &.active { height: 180px; opacity: 1; }
   }
 }
 
@@ -49,11 +49,22 @@
       }
     }
   }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    & > button {
+      margin: 12px 5px 0 5px;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
   .photo-row .info.active {
-    height: 246px;
+    height: 286px;
   }
   .sliding-info .split { display: none; }
   .sliding-info .split-mobile { display: flex; }

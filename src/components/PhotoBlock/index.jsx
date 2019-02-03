@@ -1,101 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CloseIcon from '@material-ui/icons/Close';
 
 import Photo from 'components/Photo';
+import Info from 'components/Info';
 import { partitionBlock } from 'utilities/partition';
 
 import './styles.scss';
-
-const Info = (props) => {
-  const { data, onClose } = props;
-
-  if (data === null) {
-    return null;
-  }
-
-  const {
-    name,
-    manufacturer,
-    compatibility,
-    year,
-    condition,
-    price,
-    description
-  } = data;
-
-  return (
-    <div className="sliding-info">
-      <CloseIcon className="close" onClick={onClose} />
-      <h5>{name}</h5>
-      <div className="split">
-        <table>
-          <tbody>
-            <tr>
-              <td>Manufacturer:</td>
-              <td>{manufacturer}</td>
-            </tr>
-            <tr>
-              <td>Compatibility:</td>
-              <td>{compatibility}</td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>{year}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table>
-          <tbody>
-            <tr>
-              <td>Condition:</td>
-              <td>{condition}</td>
-            </tr>
-            <tr>
-              <td>Price:</td>
-              <td>{price}</td>
-            </tr>
-            <tr>
-              <td>Description:</td>
-              <td>{description}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="split-mobile">
-        <table>
-          <tbody>
-            <tr>
-              <td>Manufacturer:</td>
-              <td>{manufacturer}</td>
-            </tr>
-            <tr>
-              <td>Compatibility:</td>
-              <td>{compatibility}</td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>{year}</td>
-            </tr>
-            <tr>
-              <td>Condition:</td>
-              <td>{condition}</td>
-            </tr>
-            <tr>
-              <td>Price:</td>
-              <td>{price}</td>
-            </tr>
-            <tr>
-              <td>Description:</td>
-              <td>{description}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
 
 class PhotoRow extends Component {
   constructor() {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 import CameraAltIcon from '@material-ui/icons/CameraAlt'
@@ -9,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 
 import { uploadItem as uploadItemAPI } from 'services/api/items';
+import { getItems } from 'services/item/actions';
 
 import './styles.scss';
 
@@ -30,6 +33,7 @@ class ItemUpload extends Component {
     this.state = {
       imageUploaded: false,
       error: false,
+      redirect: false,
     }
   }
 
@@ -38,13 +42,23 @@ class ItemUpload extends Component {
   }
 
   submit = (values, bag) => {
+    const { getItems } = this.props;
+
     bag.setSubmitting(true);
     uploadItemAPI(values)
-      .then(() => bag.setSubmitting(false));
+      .then(() => {
+        bag.setSubmitting(false);
+        getItems();
+        this.setState({ redirect: true });
+      });
   }
 
   render() {
-    const { imageUploaded } = this.state;
+    const { imageUploaded, redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div className="container upload">
@@ -171,4 +185,8 @@ class ItemUpload extends Component {
   }
 }
 
-export default ItemUpload;
+const mapDispatchToProps = dispatch => ({
+  getItems: () => dispatch(getItems()),
+});
+
+export default connect(undefined, mapDispatchToProps)(ItemUpload);
