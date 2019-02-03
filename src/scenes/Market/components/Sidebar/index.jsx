@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
       <div className="market-sidebar">
         {
           filterOptions.map(filter => (
-            <div className="filter-option">
+            <div className="filter-option" key={filter}>
               <span>{filter}</span>
               <input
                 type="checkbox"

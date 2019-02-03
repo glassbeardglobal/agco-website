@@ -1,0 +1,36 @@
+.upload {
+  justify-content: center;
+  box-sizing: border-box;
+
+  h3 { text-align: center; }
+  button {
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    top: 40vh;
+
+    input { display: none; }
+    span label svg {
+      padding-top: 8px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .field-1 {
+    margin-top: 64px;
+
+    .field {
+      width: calc(100% - 50px);
+      box-sizing: border-box;
+      margin: 6px 25px 0 25px;
+
+      &.ta > div {
+        background-color: rgba(0,0,20,0.03);
+      }
+
+      & > .sel { width: 100%; }
+    }
+  }
+}

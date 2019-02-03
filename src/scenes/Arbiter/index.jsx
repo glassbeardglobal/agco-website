@@ -7,8 +7,6 @@ import Home from './scenes/Home';
 class Arbiter extends Component {
   render() {
     const { user } = this.props;
-    
-    console.log(user)
 
     if (user === null) {
       return <Login />;

@@ -6,6 +6,7 @@ import { Transition, config, animated } from 'react-spring';
 import Nav from 'components/Nav';
 import Arbiter from 'scenes/Arbiter';
 import Market from 'scenes/Market';
+import ItemUpload from 'scenes/ItemUpload';
 import store from 'services/store';
 import { getItems } from 'services/item/actions';
 import { getUsers as getOtherUsers } from 'services/otherUsers/actions';
@@ -18,6 +19,8 @@ const mapRouteToComponent = (pathname) => {
       return Arbiter;
     case "/market":
       return Market;
+    case "/upload":
+      return ItemUpload;
     default:
       return null;
   }
@@ -42,7 +45,6 @@ class App extends Component {
             render={({ location }) => (
               <div>
                 <Nav />
-
                 <div className="views">
                   <Transition
                     config={config.fast}
@@ -55,7 +57,7 @@ class App extends Component {
                     {pathname => style => {
                       const Component = mapRouteToComponent(pathname)
                       return (
-                        <animated.div style={{ ...style, position: 'absolute', width: '100vw' }}>
+                        <animated.div style={{ ...style, position: 'absolute', width: '100vw', minHeight: '100%' }}>
                           <Component />
                         </animated.div>
                       )
