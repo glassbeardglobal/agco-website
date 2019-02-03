@@ -35,6 +35,16 @@ const mapRouteToComponent = (pathname) => {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      rested: {},
+    }
+
+    this.handleRest = this.handleRest.bind(this);
+  }
+
   componentDidMount() {
     store.dispatch(getItems());
     store.dispatch(getOtherUsers());
@@ -45,8 +55,14 @@ class App extends Component {
     }
   }
 
+  handleRest(pathname) {
+    const { rested } = this.state;
+    this.setState({ rested: { ...rested, [pathname]: true }});
+  }
+
   render() {
     const { pane, setPane } = this.props;
+    const { rested } = this.state;
 
     return (
       <BrowserRouter>
@@ -62,12 +78,15 @@ class App extends Component {
                   from={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
                   enter={{ opacity: 1, transform: 'scale3d(1,1,1)' }}
                   leave={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
+                  onRest={(pathname) => {
+                    this.handleRest(pathname);
+                  }}
                 >
                   {pathname => style => {
                     const Component = mapRouteToComponent(pathname)
                     return (
                       <animated.div style={{ ...style, position: 'absolute', width: '100vw', minHeight: '100%' }}>
-                        <Component />
+                        <Component rested={rested[pathname]} />
                       </animated.div>
                     )
                   }}
