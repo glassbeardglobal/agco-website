@@ -22,6 +22,26 @@ class Market extends React.Component {
     });
   }
 
+  filter = (photos) => {
+    const { filters, searchDirty, searchQuery } = this.props;
+    let res = photos.map(x => Object.assign({}, x));
+    if (filters.length !== 0) {
+      res = res.filter(p => { return filters.indexOf(p.category) >= 0; });
+    }
+    if (searchDirty) {
+      res = res.filter(p => {
+        const q = searchQuery.toLowerCase();
+        return (
+          p.name.toLowerCase().indexOf(q) !== -1 ||
+          p.manufacturer.toLowerCase().indexOf(q) !== -1 ||
+          p.compatibility.toLowerCase().indexOf(q) !== -1
+        );
+      });
+    }
+
+    return res;
+  }
+
   render() {
     const { items } = this.props;
     const { width } = this.state;
@@ -40,12 +60,12 @@ class Market extends React.Component {
         }
       });
 
+      const filtered = this.filter(photos);
+
       body = (
-        <PhotoBlock photos={photos} width={width} disableButtons />
+        <PhotoBlock photos={filtered} width={width} disableButtons />
       );
     }
-
-    console.log(items);
 
     return (
       <div className="home-wrapper">
@@ -65,6 +85,9 @@ class Market extends React.Component {
 
 const mapStateToProps = state => ({
   items: state.item.data,
+  filters: state.market.filters,
+  searchDirty: state.market.searchDirty,
+  searchQuery: state.market.searchQuery,
 });
 
 export default connect(mapStateToProps, null)(Market);

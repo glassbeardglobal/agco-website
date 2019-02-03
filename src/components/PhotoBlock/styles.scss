@@ -6,12 +6,19 @@
     overflow: hidden;
 
     &.inactive { height: 0; opacity: 0; }
-    &.active { height: 180px; opacity: 1; }
+    &.active {
+      height: 184px;
+      opacity: 1;
+    }
   }
 }
 
 .sliding-info {
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
+  background: #C9D6FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(180deg, #fff, #f0f0f4);
+  background: linear-gradient(180deg, #fff, #f0f0f4);
+
   border-radius: 3px;
   margin-top: 5px;
   padding: 10px;
