@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-class History extends Component {
-  render() {
-    return (
-      <div className="pane inventory">
-        <h1>History</h1>
-      </div>
-    );
-  }
+const History = ({ history }) => {
+  return (
+    <div>
+      {
+        history.map(transaction => (
+          <div>
+            
+          </div>
+        ))
+      }
+    </div>
+  );
 }
 
-export default History;
+const mapStateToProps = state => ({
+  history: state.user.data.history,
+}); 
+
+export default connect(mapStateToProps)(History);
