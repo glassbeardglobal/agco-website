@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import StoreIcon from '@material-ui/icons/Store';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-import AssessmentIcon from '@material-ui/icons/Assessment';
 
 import Profile from 'components/Profile';
+import { setPane } from 'services/UI/actions';
 
 import History from './components/History';
 import Insights from './components/Insights';
@@ -20,7 +16,6 @@ class Home extends Component {
     super();
 
     this.state = {
-      pane: 0,
       width: 0,
     };
 
@@ -33,13 +28,9 @@ class Home extends Component {
     });
   }
 
-  setPane = (pane) => {
-    this.setState({ pane });
-  }
-
   render() {
-    const { pane, width } = this.state;
-    const { userId } = this.props;
+    const { width } = this.state;
+    const { pane, userId, setPane } = this.props;
 
     return (
       <div className="home-wrapper">
@@ -47,7 +38,7 @@ class Home extends Component {
           <div className="left">
             <div>
               <Profile userId={userId}/>
-              <Picker active={pane} setPane={this.setPane} />
+              <Picker active={pane} setPane={setPane} />
             </div>
           </div>
           <div className="right" ref={this.rightRef}>
@@ -62,20 +53,6 @@ class Home extends Component {
             </PaneTranstition>
           </div>
         </div>
-
-        <div className="tabs">
-          <Tabs
-            value={pane}
-            onChange={(_, val) => this.setPane(val)}
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab icon={<StoreIcon />} />
-            <Tab icon={<ReceiptIcon />} />
-            <Tab icon={<AssessmentIcon />} />
-          </Tabs>
-        </div>
       </div>
     );
   }
@@ -83,6 +60,10 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   userId: state.user.data._id,
+  pane: state.ui.pane,
+});
+const mapDispatchToProps = dispatch => ({
+  setPane: pane => dispatch(setPane(pane)),
 });
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

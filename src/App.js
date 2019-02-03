@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { Transition, config, animated } from 'react-spring';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import StoreIcon from '@material-ui/icons/Store';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 import Nav from 'components/Nav';
 import Arbiter from 'scenes/Arbiter';
@@ -11,7 +18,8 @@ import store from 'services/store';
 import { getItems } from 'services/item/actions';
 import { getUsers as getOtherUsers } from 'services/otherUsers/actions';
 import { getTransactions } from 'services/transaction/actions';
-import { login} from 'services/user/actions';
+import { login } from 'services/user/actions';
+import { setPane } from 'services/UI/actions';
 
 const mapRouteToComponent = (pathname) => {
   switch (pathname) {
@@ -38,39 +46,72 @@ class App extends Component {
   }
 
   render() {
+    const { pane, setPane } = this.props;
+
     return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <Route
-            render={({ location }) => (
-              <div>
-                <Nav />
-                <div className="views">
-                  <Transition
-                    config={config.fast}
-                    items={location.pathname}
-                    initial
-                    from={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
-                    enter={{ opacity: 1, transform: 'scale3d(1,1,1)' }}
-                    leave={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
-                  >
-                    {pathname => style => {
-                      const Component = mapRouteToComponent(pathname)
-                      return (
-                        <animated.div style={{ ...style, position: 'absolute', width: '100vw', minHeight: '100%' }}>
-                          <Component />
-                        </animated.div>
-                      )
-                    }}
-                  </Transition>
-                </div>
+      <BrowserRouter>
+        <Route
+          render={({ location }) => (
+            <div>
+              <Nav />
+              <div className="views">
+                <Transition
+                  config={config.fast}
+                  items={location.pathname}
+                  initial
+                  from={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
+                  enter={{ opacity: 1, transform: 'scale3d(1,1,1)' }}
+                  leave={{ opacity: 0, transform: 'scale3d(0.5,0.5,0.5)' }}
+                >
+                  {pathname => style => {
+                    const Component = mapRouteToComponent(pathname)
+                    return (
+                      <animated.div style={{ ...style, position: 'absolute', width: '100vw', minHeight: '100%' }}>
+                        <Component />
+                      </animated.div>
+                    )
+                  }}
+                </Transition>
               </div>
-            )}
-          />
-        </BrowserRouter>
-      </Provider>
+
+              { console.log(location) }
+
+              { location.pathname === "/" &&
+                <div className="tabs">
+                  <Tabs
+                    value={pane}
+                    onChange={(_, val) => setPane(val)}
+                    variant="fullWidth"
+                    indicatorColor="primary"
+                    textColor="primary"
+                  >
+                    <Tab icon={<StoreIcon />} />
+                    <Tab icon={<ReceiptIcon />} />
+                    <Tab icon={<AssessmentIcon />} />
+                  </Tabs>
+                </div>
+              }
+
+              { location.pathname === "/" && pane === 0 &&
+                <Fab color="secondary" aria-label="Add" className="add-icon">
+                  <Link to="/upload">
+                    <AddIcon />
+                  </Link>
+                </Fab>
+              }
+            </div>
+          )}
+        />
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  pane: state.ui.pane,
+});
+const mapDispatchToProps = dispatch => ({
+  setPane: pane => dispatch(setPane(pane)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

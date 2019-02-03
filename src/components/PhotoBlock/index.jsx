@@ -159,10 +159,7 @@ const PR = connect(mapStateToProps, mapDispatchToProps)(PhotoRow);
 class PhotoBlock extends Component {
   render() {
     const { photos, width } = this.props;
-
-    console.log(width);
-
-    const rows = partitionBlock(photos, width < 800);
+    const rows = partitionBlock(photos, width < 500);
 
     return (
       <div>

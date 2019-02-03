@@ -1,5 +1,5 @@
 .home {
-  padding-top: 100px;
+  padding-top: 70px;
   padding-bottom: 48px;
   display: flex;
   flex-direction: row;
@@ -19,17 +19,17 @@
       h1 { font-weight: 200; }
     }
   }
+}
 
-  .add-icon {
-    position: fixed;
-    bottom: 68px;
-    display: none;
-    right: 20px;
-    z-index: 100;
-    a { color: white; }
+button.add-icon {
+  position: fixed;
+  bottom: 68px;
+  display: none;
+  right: 20px;
+  z-index: 100;
+  a { color: white; }
 
-    span svg { padding-top: 4px; }
-  }
+  span svg { padding-top: 4px; }
 }
 
 .home-wrapper {
@@ -51,9 +51,9 @@
   .home {
     .left { display: none; }
     .right { margin-left: 0; }
-    .add-icon { display: block; }
   }
 
+  button.add-icon { display: block; }
   .tabs {
     display: block;
   }
