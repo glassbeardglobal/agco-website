@@ -6,12 +6,14 @@ import userReducer from './user/reducer';
 import itemReducer from './item/reducer';
 import uiReducer from './UI/reducer';
 import otherUsersReducer from './otherUsers/reducer';
+import transactionReducer from './transaction/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   ui: uiReducer,
   item: itemReducer,
   otherUsers: otherUsersReducer,
+  transaction: transactionReducer,
 });
 
 let middleware = applyMiddleware(thunk, logger);
