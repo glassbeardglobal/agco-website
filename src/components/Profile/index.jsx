@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-
-import radue from 'assets/images/radue.jpg';
+import { connect } from 'react-redux'; 
 
 import './styles.scss';
 
 class Profile extends Component {
   render() {
+    const { userDict, userId } = this.props;
+    const user = userDict[userId];
     return (
       <div className="profile">
         <div className="profile-image">
-          <img src={radue} alt="Radue" />
+          <img src={user.image} alt="Radue" />
         </div>
 
         <div className="name">
-          <h1>Bhangra Distributions LLC</h1>
+          <h1>{user.name}</h1>
         </div>
 
         <div className="info">
@@ -21,19 +22,15 @@ class Profile extends Component {
             <tbody>
               <tr>
                 <td>Contact</td>
-                <td>Radue Bhangra</td>
+                <td>{user.contact}</td>
               </tr>
               <tr>
                 <td>Address</td>
-                <td>
-                  420 Bhangra Avenue
-                  Browntown, Illinois
-                  60420
-                </td>
+                <td>{user.address}</td>
               </tr>
               <tr>
                 <td>Telephone</td>
-                <td>+1 (847) 696-9696</td>
+                <td>{user.telephone}</td>
               </tr>
             </tbody>
           </table>
@@ -43,4 +40,8 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => ({
+  userDict: state.otherUsers.data.byId,
+});
+
+export default connect(mapStateToProps, null)(Profile);

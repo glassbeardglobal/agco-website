@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import StoreIcon from '@material-ui/icons/Store';
@@ -38,13 +39,14 @@ class Home extends Component {
 
   render() {
     const { pane, width } = this.state;
+    const { userId } = this.props;
 
     return (
       <div className="home-wrapper">
         <div className="home container">
           <div className="left">
             <div>
-              <Profile />
+              <Profile userId={userId}/>
               <Picker active={pane} setPane={this.setPane} />
             </div>
           </div>
@@ -79,4 +81,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  userId: state.user.data._id,
+});
+
+export default connect(mapStateToProps, null)(Home);
