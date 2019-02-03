@@ -1,5 +1,9 @@
 .insights {
   display: flex;
+  @media (max-width: 830px) {
+    width: 100%;
+    flex-wrap: wrap;
+  }
 
   div {
     display: flex;
@@ -7,11 +11,19 @@
     width: 50%;
     align-items: center;
 
+    @media (max-width: 830px) {
+      width: 100%;
+    }
+
     h3 {
       font-family: 'Raleway', serif;
       font-weight: 300;
       text-align: center;
       margin-bottom: 40px;
+
+      @media (max-width: 830px) {
+        display: none;
+      }
     }
 
     .graph-cont {
@@ -26,11 +38,12 @@
       }
     }
   }
-
-  .buyer {
-    margin-right: 20px;
-  }
-  .seller {
-    margin-left: 20px;
+  @media (min-width: 831px) {
+    .buyer {
+      margin-right: 20px;
+    }
+    .seller {
+      margin-left: 20px;
+    }
   }
 }
