@@ -1,7 +1,9 @@
 import linearPartition from 'linear-partition';
 
-export const partitionBlock = (arr) => {
-  const numRows = Math.ceil(arr.length / 2.3);
+export const partitionBlock = (arr, mobile) => {
+  let factor = 2.3;
+  if (mobile) { factor = 1; }
+  const numRows = Math.ceil(arr.length / factor);
   const weights = arr.map(x => {
     const og = x.images[x.images.length-1];
     return og.width / og.height;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -12,17 +11,17 @@ class Photo extends Component {
   onLoad = () => { this.setState({ loaded: true }) }
 
   render() {
-    const { images, imgWidth, _id, name } = this.props;
+    const { images, imgWidth, name, onClick } = this.props;
     const { loaded } = this.state;
     const og = images[images.length - 1];
 
     const srcset = images.map(i => `${i.url} ${i.width}w`);
 
     return (
-      <Link
-        to={`/view/${_id}`}
+      <div
         className={`photo ${loaded ? 'ready' : 'loading'}`}
         style={{ width: imgWidth }}
+        onClick={onClick}
       >
         <img
           src={og.url}
@@ -32,7 +31,7 @@ class Photo extends Component {
           alt={name}
         />
         <div className="description"><p>{name}</p></div>
-      </Link>
+      </div>
     );
   }
 }
