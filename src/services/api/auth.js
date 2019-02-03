@@ -15,3 +15,19 @@ export const fetchLogin = (username, password) => {
     return response.json();
   });
 }
+
+
+export const fetchUser = (userId) => {
+  return fetch(`/user/${userId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => {
+    if (response.status >= 400) {
+      throw new Error(`Fetch user failed`);
+    }
+    return response.json();
+  });
+}

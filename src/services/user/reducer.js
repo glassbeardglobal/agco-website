@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  USER_RESPONSE,
 } from './actions';
 
 const initialState = {
@@ -26,7 +27,11 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetching: false,
         loginSuccessful: false,
-      });   
+      });
+    case USER_RESPONSE:
+      return Object.assign({}, state, {
+        data: action.data,
+      }); 
     default:
       return state;
   }

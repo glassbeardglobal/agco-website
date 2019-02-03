@@ -4,7 +4,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import Button from '@material-ui/core/Button';
 
 import { toggleSelling } from 'services/api/items';
+import { uploadTransaction } from 'services/api/transaction';
 import { getItems } from 'services/item/actions';
+import { getUsers } from 'services/otherUsers/actions';
+import { getTransactions } from 'services/transaction/actions';
+import { getUser } from 'services/user/actions';
 
 class Info extends Component {
   onMarket = () => {
@@ -20,6 +24,23 @@ class Info extends Component {
     const { _id } = data;
     toggleSelling(_id, false)
       .then(x => getItems())
+      .catch(err => console.log(err));
+  }
+
+  onMarket = () => {
+    const { data, userId } = this.props;
+    const itemId = data._id;
+    const price = data.price;
+    const sellerId = data.userId;
+    const buyerId = userId;
+
+    uploadTransaction(itemId, buyerId, sellerId, price)
+      .then(() => {
+        getItems();
+        getUsers();
+        getTransactions();
+        getUser(userId);
+      })
       .catch(err => console.log(err));
   }
 
@@ -134,8 +155,12 @@ class Info extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  userId: state.user.data._id,
+});
+
 const mapDispatchToProps = dispatch => ({
   getItems: () => dispatch(getItems()),
 });
 
-export default connect(undefined, mapDispatchToProps)(Info);
+export default connect(mapStateToProps, mapDispatchToProps)(Info);
