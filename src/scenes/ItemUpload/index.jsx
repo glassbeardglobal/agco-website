@@ -20,6 +20,7 @@ const FORM_INITIAL = {
   name: '',
   manufacturer: '',
   compatibility: '',
+  category: '',
   description: '',
   condition: '',
   year: '',
@@ -115,15 +116,23 @@ class ItemUpload extends Component {
                       value={values.manufacturer}
                       className="field"
                     />
-                    <TextField
-                      type="text"
-                      label="Compatibility"
-                      name="compatibility"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.compatibility}
-                      className="field"
-                    />
+                    <div className="field" style={{ marginTop: 14 }}>
+                      <InputLabel htmlFor="compatability">Compatibility</InputLabel>
+                      <Select
+                        value={values.compatibility}
+                        onChange={handleChange}
+                        inputProps={{
+                          name: 'compatibility',
+                          id: 'compatibility',
+                        }}
+                        className="sel"
+                      >
+                        <MenuItem value="Challenger">Challenger</MenuItem>
+                        <MenuItem value="Massey Ferguson">Massey Ferguson</MenuItem>
+                        <MenuItem value="Fendt">Fendt</MenuItem>
+                        <MenuItem value="Valtra">Valtra</MenuItem>
+                      </Select>
+                    </div>
                     <TextField
                       type="text"
                       label="Description"
@@ -152,6 +161,28 @@ class ItemUpload extends Component {
                         <MenuItem value={'Used - Refurbished'}>Used - Refurbished</MenuItem>
                         <MenuItem value={'Used - Well Worn'}>Used - Well Worn</MenuItem>
                         <MenuItem value={'Used - Functional'}>Used - Functional</MenuItem>
+                      </Select>
+                    </div>
+                    <div className="field" style={{ marginTop: 14 }}>
+                      <InputLabel htmlFor="category">Categories</InputLabel>
+                      <Select
+                        value={values.category}
+                        onChange={handleChange}
+                        inputProps={{
+                          name: 'category',
+                          id: 'category',
+                        }}
+                        className="sel"
+                      >
+                        <MenuItem value="Oils">Oils</MenuItem>
+                        <MenuItem value="Gears">Gears</MenuItem>
+                        <MenuItem value="Sensors">Sensors</MenuItem>
+                        <MenuItem value="Motors">Motors</MenuItem>
+                        <MenuItem value="Chains">Chains</MenuItem>
+                        <MenuItem value="Tools">Tools</MenuItem>
+                        <MenuItem value="Fittings">Fittings</MenuItem>
+                        <MenuItem value="Connectors">Connectors</MenuItem>
+                        <MenuItem value="Tires">Tire</MenuItem>
                       </Select>
                     </div>
                     <TextField

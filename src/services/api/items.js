@@ -23,6 +23,7 @@ export const uploadItem = (data) => {
   formData.append('name', data.name);
   formData.append('manufacturer', data.manufacturer);
   formData.append('compatibility', data.compatibility);
+  formData.append('category', data.category);
   formData.append('description', data.description);
   formData.append('condition', data.condition);
   formData.append('year', data.year);
