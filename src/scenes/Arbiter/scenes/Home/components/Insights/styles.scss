@@ -1,0 +1,36 @@
+.insights {
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+
+    h3 {
+      font-family: 'Raleway', serif;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .graph-cont {
+      flex-shrink: 0;
+      width: 100%;
+      margin-bottom: 70px;
+
+      .graph-desc {
+        font-family: 'Raleway', serif;
+        margin-top: 10px;
+        height: 30px;
+      }
+    }
+  }
+
+  .buyer {
+    margin-right: 20px;
+  }
+  .seller {
+    margin-left: 20px;
+  }
+}

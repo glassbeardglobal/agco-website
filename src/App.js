@@ -33,7 +33,7 @@ class App extends Component {
     store.dispatch(getTransactions());
 
     if (process.env.REACT_APP_BYPASS_LOGIN) {
-      setTimeout(() => store.dispatch(login('farmer1@gmail.com', 'dockboi')), 300);
+      setTimeout(() => store.dispatch(login('bigdock2@gmail.com', 'boithedock')), 300);
     }
   }
 

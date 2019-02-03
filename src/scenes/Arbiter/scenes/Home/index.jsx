@@ -58,7 +58,7 @@ class Home extends Component {
               <History />
             </PaneTranstition>
             <PaneTranstition visible={pane === 2} uid="insights-pane">
-              <Insights />
+              <Insights visible={pane === 2}/>
             </PaneTranstition>
           </div>
         </div>
