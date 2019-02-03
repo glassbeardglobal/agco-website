@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
+
+import { login } from 'services/user/actions';
 
 import './styles.scss';
 
 class Login extends Component {
   submit = (values) => {
-    console.log(values);
+    this.props.login(values.email, values.password);
   }
 
   render() {
@@ -58,4 +61,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  login: (username, password) => dispatch(login(username, password)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
