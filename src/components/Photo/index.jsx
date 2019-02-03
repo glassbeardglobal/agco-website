@@ -18,6 +18,8 @@ class Photo extends Component {
 
     const srcset = images.map(i => `${i.url} ${i.width}w`);
 
+    console.log(this.props);
+
     return (
       <Link
         to={`/view/${_id}`}
