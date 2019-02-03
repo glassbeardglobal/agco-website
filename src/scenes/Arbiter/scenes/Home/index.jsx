@@ -15,7 +15,16 @@ class Home extends Component {
 
     this.state = {
       pane: 0,
+      width: 0,
     };
+
+    this.rightRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({
+      width: this.rightRef.current.clientWidth,
+    });
   }
 
   setPane = (pane) => {
@@ -23,7 +32,7 @@ class Home extends Component {
   }
 
   render() {
-    const { pane } = this.state;
+    const { pane, width } = this.state;
 
     return (
       <div className="home container">
@@ -31,9 +40,9 @@ class Home extends Component {
           <Profile />
           <Picker active={pane} setPane={this.setPane} />
         </div>
-        <div className="right">
+        <div className="right" ref={this.rightRef}>
           <PaneTranstition visible={pane === 0} uid="inventory-pane">
-            <Inventory />
+            <Inventory width={width} />
           </PaneTranstition>
           <PaneTranstition visible={pane === 1} uid="history-pane">
             <History />

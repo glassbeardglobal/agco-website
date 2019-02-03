@@ -5,19 +5,27 @@ import PhotoBlock from 'components/PhotoBlock';
 
 class Inventory extends Component {
   render() {
-    const { items } = this.props;
+    const { items, width } = this.props;
 
     let body = null;
-    if (items) {
+    if (items && width > 0) {
       const { byId } = items;
+      const photos = [];
+
+      Object.keys(byId).forEach(id => {
+        const img = byId[id];
+        photos.push(Object.assign({}, img, {
+          images: [img.image]
+        }));
+      });
+
       body = (
-        <h1>Loaded Bitch</h1>
+        <PhotoBlock photos={photos} width={width} />
       );
     }
 
     return (
       <div className="pane inventory">
-        <h1>Inventory</h1>
         { body }
       </div>
     );
